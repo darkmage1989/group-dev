@@ -1,18 +1,18 @@
 import s from "./Button.module.css";
 
-type BtnProps = {
+interface BtnProps  {
   classNameAdd: string;
   nameButton: string;
-  hendelFunc: () => void;
+  handelFunc: () => void;
 };
 
-const Button = (props: BtnProps) => {
+const Button = ({classNameAdd,nameButton,handelFunc}:BtnProps) => {
   return (
     <button
-      className={`${s.buttonDefault} ${s[props.classNameAdd]}`}
-      onClick={props.hendelFunc}
+      className={`${s.buttonDefault} ${s[classNameAdd]}`}
+      onClick={handelFunc}
     >
-      {props.nameButton}
+      {nameButton}
     </button>
   );
 };

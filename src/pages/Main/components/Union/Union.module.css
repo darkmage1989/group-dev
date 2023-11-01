@@ -1,0 +1,8 @@
+.union {
+    position: relative;
+}
+.union__text {
+    position: absolute;
+    top: 50px;
+    left: 30px; 
+}
