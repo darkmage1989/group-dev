@@ -1,0 +1,49 @@
+.workout__general {
+    width: 278px;
+    height: 76px;
+    border-radius: 26px;
+    border: 1px solid #000;
+    padding-top: 12px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    color: #000;
+    position: relative;
+}
+
+.workout__general_ready {
+    border: 1px solid #06B16E;
+}
+
+.workout__title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    font-style: normal;
+    line-height: 115%;
+}
+
+.workout__title_ready {
+    color: #06B16E;
+}
+
+.workout__text {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 18px;
+}
+
+.workout__text_ready {
+    color: #06B16E;
+}
+
+.workout__img {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 27px;
+    height: 26px;
+    background-image:
+        url(../../assets/img/workout_ready.svg);
+}
