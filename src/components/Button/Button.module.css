@@ -49,3 +49,18 @@
     background-color: #D9D9D9;
     border: 1px solid #D0CECE;
 }
+
+.darkBlueMini {
+    background-color: #140D40;
+    width: 77px;
+    height: 36px;
+    font-size: 16px;
+}
+
+.darkBlueMini:hover {
+    background-color: #2D1F79;
+}
+
+.darkBlueMini:active {
+    background-color: #3B29A1;
+}
