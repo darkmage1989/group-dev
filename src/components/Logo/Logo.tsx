@@ -26,8 +26,8 @@ const Logo = () => {
       </g>
     </g>
     <defs>
-      <filter id="filter0_f_26_1313" x="-1.46075" y="7.53986" width="20.9825" height="22.9216" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter0_f_26_1313" x="-1.46075" y="7.53986" width="20.9825" height="22.9216" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
         <feGaussianBlur stdDeviation="0.730621" result="effect1_foregroundBlur_26_1313"/>
       </filter>

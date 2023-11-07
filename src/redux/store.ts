@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import dataExerciseSlice from './slices/dataExerciseSlice'
+import { lessonsApi } from "./apis/apis";
 export const store = configureStore({
   reducer: {
+    [lessonsApi.reducerPath]: lessonsApi.reducer,
     dataExerciseSlice
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(lessonsApi.middleware),
     
 });
 

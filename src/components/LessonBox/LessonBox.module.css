@@ -1,0 +1,19 @@
+.lesson__box {
+  height: 460px;
+  width: 340px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.title {
+  display: block;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: Abhaya Libre ExtraBold;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 110%; /* 39.6px */
+  letter-spacing: -0.5px;
+}
