@@ -1,0 +1,23 @@
+.main__section {
+    background-color: #F5F5F5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main__login {
+    background-color: #fff;
+    width: 366px;
+    height: 439px;
+    border-radius: 12px;
+    padding-top: 33px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.error {
+    height: 20px;
+}

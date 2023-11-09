@@ -1,12 +1,12 @@
 import s from "./Button.module.css";
 
-interface BtnProps  {
+interface BtnProps {
   classNameAdd: string;
   nameButton: string;
-  handelFunc: () => void;
-};
+  handelFunc: (e: any) => void;
+}
 
-const Button = ({classNameAdd,nameButton,handelFunc}:BtnProps) => {
+const Button = ({ classNameAdd, nameButton, handelFunc }: BtnProps) => {
   return (
     <button
       className={`${s.buttonDefault} ${s[classNameAdd]}`}
