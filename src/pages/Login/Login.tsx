@@ -21,11 +21,8 @@ const Login = () => {
     setLogin(e.target?.value);
   };
   const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target?.value.length < 5) {
-      setError("Пароль должен содержать больше 5 символов! ");
-      if (!e.target?.value) {
-        setError("Пароль не может быть пустым!");
-      }
+    if (!e.target?.value) {
+      setError("Пароль не может быть пустым!");
     } else {
       setError("");
     }
@@ -34,20 +31,21 @@ const Login = () => {
 
   const logIn = (e: React.FormEvent<HTMLButtonElement>) => {
     e?.preventDefault();
-    const dataForm = JSON.stringify({
-      login: login,
-      pass: password,
-    });
-    console.log(dataForm);
-    loginUser(dataForm).then((data) => {
-      console.log(data);
-      if (data?.data) {
-        setSessionData(data.data?.auth_token);
-      } else if (data?.error) {
-        console.log(data.error);
-      }
-    });
-    //navigate("/");
+
+    if (login && password) {
+      const dataForm = JSON.stringify({
+        login: login,
+        pass: password,
+      });
+
+      loginUser(dataForm).then((data) => {
+        if (data?.data) {
+          setSessionData(data.data?.auth_token);
+        } else if (data?.error) {
+          setError(data.error.data.detail);
+        }
+      });
+    }
   };
 
   const regUser = () => {
