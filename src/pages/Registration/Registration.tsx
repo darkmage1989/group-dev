@@ -3,7 +3,7 @@ import Logo from "../../components/Logo/Logo";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
-import { useRegUserMutation } from "../../services/user";
+import { useRegUserMutation } from "../../redux/apis/user";
 
 const Registration = () => {
   const [login, setLogin] = useState("");
@@ -44,15 +44,15 @@ const Registration = () => {
 
   const handelFunc = (e: React.FormEvent<HTMLInputElement>) => {
     e?.preventDefault();
-    const dataForm = {
+    const dataForm = JSON.stringify({
       login: login,
-      password: password,
-    };
+      pass: password,
+    });
     console.log(dataForm);
-     registration(dataForm).then((data) => {
+    registration(dataForm).then((data) => {
       console.log(data);
     });
-
+    
     console.log(login);
     console.log(password);
     console.log(passwordRepeat);

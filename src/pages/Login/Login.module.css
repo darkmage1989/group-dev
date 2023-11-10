@@ -18,6 +18,10 @@
     gap: 20px;
     align-items: center;
 }
+
 .error {
     height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #BCEC30;
 }
