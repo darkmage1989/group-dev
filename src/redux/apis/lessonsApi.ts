@@ -14,8 +14,16 @@ export const lessonsApi = createApi({
         };
       },
     }),
+    getLessonId: builder.query({
+      query: (lessonId) => {
+        return {
+          url: `posts/${lessonId}`,
+          method: 'GET',
+        };
+      },
+    }),
   }),
   
 });
-export const { useGetLessonsApiQuery } = lessonsApi;
+export const { useGetLessonsApiQuery, useGetLessonIdQuery } = lessonsApi;
 
