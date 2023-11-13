@@ -3,15 +3,15 @@ import Logo from "../../components/Logo/Logo";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
-import { useRegUserMutation } from "../../redux/apis/user";
-import { setSessionData } from "../../services/storage";
+//import { useRegUserMutation } from "../../redux/apis/user";
+//import { setSessionData } from "../../services/storage";
 
 const Registration = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [error, setError] = useState("");
-  const [registration] = useRegUserMutation();
+  //const [registration] = useRegUserMutation();
 
   const loginHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target?.value) {
@@ -43,23 +43,22 @@ const Registration = () => {
     setPasswordRepeat(e.target?.value);
   };
 
-  const handelFunc = (e: React.FormEvent<HTMLInputElement>) => {
-    e?.preventDefault();
+  const handelFunc = () => {
+    //e?.preventDefault();
 
     if (login && password.length > 5 && password === passwordRepeat) {
-      const dataForm = JSON.stringify({
-        login: login,
-        pass: password,
-      });
-
-      registration(dataForm).then((data) => {
-        if (data?.data) {
-          setSessionData(data.data?.auth_token);
-          setError(data.data.detail);
-        } else if (data?.error) {
-          setError(data.error.data.login);
-        }
-      });
+      // const dataForm = JSON.stringify({
+      //   login: login,
+      //   pass: password,
+      // });
+      // registration(dataForm).then((data) => {
+      //   if (data?.data) {
+      //     setSessionData(data.data?.auth_token);
+      //     setError(data.data.detail);
+      //   } else if (data?.error) {
+      //     setError(data.error.data.login);
+      //   }
+      // });
     }
   };
 

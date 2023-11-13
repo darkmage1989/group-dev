@@ -3,14 +3,22 @@ import s from "./Button.module.css";
 interface BtnProps {
   classNameAdd: string;
   nameButton: string;
-  handelFunc: (e: any) => void;
+  isDisabled?: boolean;
+  handelFunc: () => void;
 }
 
-const Button = ({ classNameAdd, nameButton, handelFunc }: BtnProps) => {
+const Button = ({
+  classNameAdd,
+  nameButton,
+  isDisabled,
+
+  handelFunc,
+}: BtnProps) => {
   return (
     <button
       className={`${s.buttonDefault} ${s[classNameAdd]}`}
       onClick={handelFunc}
+      disabled={isDisabled}
     >
       {nameButton}
     </button>

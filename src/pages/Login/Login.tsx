@@ -2,80 +2,83 @@ import s from "./Login.module.css";
 import Logo from "../../components/Logo/Logo";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLogUserMutation } from "../../redux/apis/user";
-import { setSessionData } from "../../services/storage";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loginUser] = useLogUserMutation();
+  const [errorText, setErrorText] = useState("");
+  const [loginUser, { data, isLoading, error }]: any = useLogUserMutation();
   const navigate = useNavigate();
 
-  const loginHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target?.value) {
-      setError("Логин не может быть пустым!");
-    } else setError("");
-    setLogin(e.target?.value);
+  const onChangeInputs = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    functionState: (e: string) => void
+  ) => {
+    functionState(event.target.value.trim());
+    setErrorText("");
   };
-  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target?.value) {
-      setError("Пароль не может быть пустым!");
-    } else {
-      setError("");
+
+  const logIn = () => {
+    if (!login || !password) {
+      setErrorText("Заполните все поля!");
+      return;
     }
-    setPassword(e.target?.value);
+
+    const dataForm = JSON.stringify({
+      login: login,
+      pass: password,
+    });
+
+    loginUser(dataForm);
   };
 
-  const logIn = (e: React.FormEvent<HTMLButtonElement>) => {
-    e?.preventDefault();
+  if (data) {
+    alert("succes");
+  }
 
-    if (login && password) {
-      const dataForm = JSON.stringify({
-        login: login,
-        pass: password,
-      });
-
-      loginUser(dataForm).then((data) => {
-        if (data?.data) {
-          setSessionData(data.data?.auth_token);
-        } else if (data?.error) {
-          setError(data.error.data.detail);
-        }
-      });
+  useEffect(() => {
+    if (error) {
+      console.log(error.data.detail);
+      setErrorText(error.data.detail);
     }
-  };
+  }, [error]);
 
   const regUser = () => {
-    console.log("hi");
     navigate("/registration");
   };
+
   return (
     <div className={s.main__section}>
-      <form className={s.main__login}>
+      <div className={s.main__login}>
         <Logo />
         <Input
           type={"text"}
           placeholder={"Логин"}
           value={login}
-          handelFunc={loginHandler}
+          handelFunc={(e) => onChangeInputs(e, setLogin)}
         />
         <Input
           type={"password"}
           placeholder={"Пароль"}
           value={password}
-          handelFunc={passwordHandler}
+          handelFunc={(e) => onChangeInputs(e, setPassword)}
         />
-        <div className={s.error}>{error}</div>
-        <Button handelFunc={logIn} classNameAdd={""} nameButton={"Войти"} />
+        <div className={s.error}>{errorText}</div>
+        <Button
+          handelFunc={logIn}
+          classNameAdd={""}
+          nameButton={"Войти"}
+          isDisabled={isLoading}
+        />
         <Button
           handelFunc={regUser}
           classNameAdd={"white"}
           nameButton={"Зарегистрироваться"}
         />
-      </form>
+      </div>
     </div>
   );
 };

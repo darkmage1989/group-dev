@@ -4,13 +4,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 interface ServerResponse {
   status?: boolean;
   detail?: string;
-  data?: DataToken;
-  error?: DataErorr;
+  data?: DataToken | DataErorr;
+  //error?: DataErorr;
 }
 
 interface DataToken {
   user_id?: number;
-  auth_token?: string;    
+  auth_token?: string;
 }
 
 interface DataErorr {
