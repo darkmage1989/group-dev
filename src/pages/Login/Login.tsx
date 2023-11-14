@@ -41,7 +41,6 @@ const Login = () => {
 
   useEffect(() => {
     if (error) {
-      console.log(error.data.detail);
       setErrorText(error.data.detail);
     }
   }, [error]);
