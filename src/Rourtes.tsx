@@ -12,9 +12,11 @@ const AppRoutes = () => {
         <Route path="/" element={<Main />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/registration" element={<Registration />}></Route>
+        <Route path="workout/:id" element={<WorkoutPage/>}/>
       </Routes>
     </BrowserRouter>
   );
 };
 
 export default AppRoutes;
+

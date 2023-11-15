@@ -1,8 +1,8 @@
 import { General } from "../../Interfaces/general";
 import Button from "../../components/Button/Button";
 import LessonBox from "../../components/LessonBox/LessonBox";
-import Logo from "../../components/Logo/Logo";
-import { useGetLessonsApiQuery } from "../../redux/apis/apis";
+import Logo from "./components/Logo/Logo";
+import { useGetLessonsApiQuery } from "../../redux/apis/lessonsApi";
 import s from "./Main.module.css";
 import Union from "./components/Union/Union";
 const Main = () => {
@@ -35,9 +35,15 @@ const Main = () => {
       </div>
       {isLoading && <div> загрузочка, но будет спинер</div>}
       {error && <div>Ошибочка, а будет еще и текс ошибочки</div>}
-      {data && <div className={s.lesson__box}>{data.data.map((item:General)=> (<LessonBox title={item.title} id={item.id}/>))}</div>}
+      {data && (
+        <div className={s.lesson__box}>
+          {data.data.map((item: General) => (
+            <LessonBox key={item.id} title={item.title} id={item.id} />
+          ))}
+        </div>
+      )}
       <div className={s.nav__box}>
-      <Button
+        <Button
           handelFunc={handelFunc}
           classNameAdd={"green"}
           nameButton={"Наверх ↑"}
