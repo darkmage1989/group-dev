@@ -13,7 +13,7 @@ const Main = () => {
   return (
     <section className={s.main__section}>
       <div className={s.head}>
-        <Logo />
+      <Logo />
         <Button
           handelFunc={handelFunc}
           classNameAdd={"darkBlueMini"}
