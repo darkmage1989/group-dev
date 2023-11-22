@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import { useState, useEffect } from "react";
 import { useRegUserMutation } from "../../redux/apis/user";
 import { setSessionData } from "../../services/storage";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const [login, setLogin] = useState("");
@@ -12,6 +13,7 @@ const Registration = () => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [errorText, setErrorText] = useState("");
   const [registration, { data, isLoading, error }]: any = useRegUserMutation();
+  const navigate = useNavigate();
 
   const onChangeInputs = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -45,8 +47,8 @@ const Registration = () => {
   };
 
   if (data) {
-    alert("succes");
-    setSessionData(data.data?.auth_token);
+    setSessionData(data.data?.auth_token, data.data?.user_id, login);
+    navigate("/");
   }
 
   useEffect(() => {

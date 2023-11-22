@@ -16,7 +16,7 @@ const Button = ({
 }: BtnProps) => {
   return (
     <button
-      className={`${s.buttonDefault} ${s[classNameAdd]}`}
+      className={`${s.buttonDefault} ${s[classNameAdd]}`} 
       onClick={handelFunc}
       disabled={isDisabled}
     >
