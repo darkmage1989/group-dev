@@ -18,15 +18,8 @@ const Autorisation = () => {
   const [isShowButtonExit, setIsShowButtonExit] = useState<boolean>(
     isAuthorize()
   );
-  // const page = window.location.pathname;
-  // let isMain = false;
-  // if (page === "/") {
-  //   isMain = true;
-  // }
-  // console.log(isMain);
 
   const dataUser = getSessionData();
-  console.log(dataUser);
 
   const [logOutUser]: any = useLogOutUserMutation();
 
@@ -38,14 +31,10 @@ const Autorisation = () => {
     setVisibleExit(visibleExit === false ? true : false);
   };
   const exit = () => {
-    console.log("exit");
     logOutUser({ user_id: dataUser?.id, token: dataUser?.token }).then(
       (response: ServerResponseExit) => {
         console.log(response);
-        // if (response.error) return;
         clearSessionData();
-        console.log(localStorage.getItem("token"));
-        console.log(response);
         setIsShowButtonExit(false);
       }
     );
@@ -80,15 +69,10 @@ const Autorisation = () => {
             />
           </svg>
           {visibleExit && (
-            <div className={s.autorisation__exit} onClick={exit}>
-              Выйти
-            </div>
+            <button className={s.autorisation__exit} onClick={exit}>
+              Выход
+            </button>
           )}
-          <Button
-            classNameAdd={"white white_mini"}
-            handelFunc={exit}
-            nameButton={"Выход"}
-          />
         </div>
       ) : (
         <Button
