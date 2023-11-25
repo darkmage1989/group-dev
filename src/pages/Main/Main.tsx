@@ -5,6 +5,7 @@ import Logo from "./components/Logo/Logo";
 import { useGetLessonsApiQuery } from "../../redux/apis/lessonsApi";
 import s from "./Main.module.css";
 import Union from "./components/Union/Union";
+import Autorisation from "../../components/Autorisation/Autorisation";
 const Main = () => {
   const { data, isLoading, error } = useGetLessonsApiQuery(null);
   const handelFunc = () => {
@@ -13,12 +14,8 @@ const Main = () => {
   return (
     <section className={s.main__section}>
       <div className={s.head}>
-      <Logo />
-        <Button
-          handelFunc={handelFunc}
-          classNameAdd={"darkBlueMini"}
-          nameButton={"Вход"}
-        />
+        <Logo />
+        <Autorisation />
       </div>
       <div className={s.text__box}>
         <div>

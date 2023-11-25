@@ -18,6 +18,21 @@ interface DataErorr {
   status?: boolean;
 }
 
+export interface ServerResponseExit {
+  data: ResponseLogout;
+}
+export interface ServerResponseExitError {
+  error: ServerResponseExit;
+}
+interface ResponseLogout {
+  status?: boolean;
+  detail?: string;
+}
+interface OutUser {
+  user_id: number;
+  token: string;
+}
+
 export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
@@ -41,7 +56,17 @@ export const usersApi = createApi({
         body,
       }),
     }),
+    logOutUser: builder.mutation<
+      ServerResponseExit | ServerResponseExitError,
+      OutUser
+    >({
+      query: ({ user_id, token }) => ({
+        method: "get",
+        url: `users/logout?user_id=${user_id}&token=${token}`,
+      }),
+    }),
   }),
 });
 
-export const { useRegUserMutation, useLogUserMutation } = usersApi;
+export const { useRegUserMutation, useLogUserMutation, useLogOutUserMutation } =
+  usersApi;

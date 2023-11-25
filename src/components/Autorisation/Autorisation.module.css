@@ -1,0 +1,41 @@
+.autorisation__login {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.autorisation__text {
+    color: #000;
+    text-align: right;
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 15px;
+    padding-right: 12px;
+}
+
+.autorisation__exit {
+    position: absolute;
+    font-family: 'StratosSkyeng', sans-serif;
+    border: #54656F;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 18px;   
+    top: 72px;
+    right: 0px;
+    padding: 10px;   
+    background-color: #fff;
+    color: #000;
+    text-align: right;    
+    font-style: normal;    
+    padding-left: 15px;
+    padding-right: 12px;
+}

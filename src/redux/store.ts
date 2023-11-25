@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import dataExerciseSlice from "./slices/dataExerciseSlice";
-import { lessonsApi } from "./apis/apis";
+import { lessonsApi } from "./apis/lessonsApi";
 import { usersApi } from "./apis/user";
 export const store = configureStore({
   reducer: {

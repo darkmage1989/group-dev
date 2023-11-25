@@ -5,6 +5,7 @@ import Button from "../../components/Button/Button";
 import { useEffect, useState } from "react";
 import { useLogUserMutation } from "../../redux/apis/user";
 import { useNavigate } from "react-router-dom";
+import { setSessionData } from "../../services/storage";
 
 const Login = () => {
   const [login, setLogin] = useState("");
@@ -36,7 +37,8 @@ const Login = () => {
   };
 
   if (data) {
-    alert("succes");
+    setSessionData(data.data?.auth_token, data.data?.user_id, login);
+    navigate("/");
   }
 
   useEffect(() => {
